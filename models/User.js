@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema(
     },
     gender: {
       type: String,
-      enum: ["male", "female", "other"],
+      enum: ["Male", "Female", "Other"],
       required: false,
     },
     phone:{
@@ -46,7 +46,7 @@ const userSchema = new mongoose.Schema(
     },
     userType: {
       type: String,
-      enum: ["donor", "hospital", "patient", "org", "other"],
+      enum: ["Donor", "Hospital", "Patient", "Organization", "Other"],
       required: true,
     },
     city:{
