@@ -4,7 +4,7 @@ import * as dotenv from "dotenv";
 import compression from "compression";
 import { connectDB } from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
-
+import userRoutes from "./routes/userRoutes.js"
 dotenv.config();
 
 const app = express();
@@ -19,6 +19,7 @@ app.use(cors());
 
 // Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/home",userRoutes);
 
 app.get("/", (req, res) => {
   res.send("API is running...");

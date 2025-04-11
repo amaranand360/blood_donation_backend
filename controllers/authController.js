@@ -1,4 +1,5 @@
 import User from "../models/User.js";
+import { uploadFileToS3 } from "../utils/s3Client.util.js";
 
 export const signup = async (req, res) => {
     try {
@@ -93,8 +94,6 @@ export const login = async (req, res) => {
     }
 };
 
-
-
 export const getUserById = async (req, res) => {
     try {
         const { userId } = req.params;
@@ -118,3 +117,29 @@ export const getUserById = async (req, res) => {
         res.status(500).json({ message: "Server error", error: error.message });
     }
 };
+
+export const uploadProfile = async (req, res) => {
+    if (!req.file) {
+      return res
+        .status(400)
+        .json(
+          new ApiResponse(
+            ResponseStatusCode.BAD_REQUEST,
+            null,
+            "No file uploaded"
+          )
+        );
+    }
+  
+    const localFilePath = req.file.path;
+    const accessUrl = await uploadFileToS3(localFilePath, "userProfile");
+  
+    return res.json(
+      new ApiResponse(
+        ResponseStatusCode.SUCCESS,
+        accessUrl,
+        "Profile Pic Uploaded successfully"
+      )
+    );
+  
+  };
