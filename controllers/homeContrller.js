@@ -4,11 +4,11 @@ import Donor from "../models/Donor.js";
 
 export const getDonors = async (req, res) => {
   try {
-    const { bloodGroup, distance, lat, lng } = req.query;
+    const { bloodGroup, distance, lat, lng } = req.body;
 
     let query = { userType: "Donor" };
 
-    if (bloodGroup && bloodGroup !== "All") {
+    if (bloodGroup !== "All") {
       query.bloodGroup = bloodGroup || "A+";
     }
     console.log(query);

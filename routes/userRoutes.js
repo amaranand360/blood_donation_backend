@@ -7,7 +7,7 @@ const router = express.Router();
 
 
 router.post('/uploadProfile', uploadFile.single('profilePicture'), uploadProfile);
-router.get('/default-donors',  getDonors);
+router.post('/default-donors',  getDonors);
 router.post('/blood-requests',  createBloodRequest);
 router.post('/donation-requests', createDonor);
 
