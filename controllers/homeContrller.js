@@ -9,7 +9,7 @@ export const getDonors = async (req, res) => {
     let query = { userType: "Donor" };
 
     if (bloodGroup && bloodGroup !== "All") {
-      query.bloodGroup = "A+" || bloodGroup;
+      query.bloodGroup = bloodGroup || "A+";
     }
     console.log(query);
 
@@ -35,7 +35,7 @@ export const getDonors = async (req, res) => {
             Math.cos(deg2rad(userLat)) * Math.cos(deg2rad(donor.latitude)) *
             Math.sin(dLng/2) * Math.sin(dLng/2);
           const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-          const distanceInKm = 6371 * c; // Radius of Earth in KM
+          const distanceInKm = 6371 * c; 
           console.log("Distance in KM:", distanceInKm);
           console.log("Max Distance:", maxDistance);
           console.log("No coordinates found for donor:", distanceInKm <= maxDistance);  
