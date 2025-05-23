@@ -60,12 +60,12 @@ const userSchema = new mongoose.Schema(
     },
     latitude:{
       type: String,
-      default : "12.971656789",
+      default : "77.44959565275133",
       required: true,
     },
     longitude:{
       type: String,
-      default : "77.59456789",
+      default : "12.660797522901328",
       required: true,
     },
     status: {

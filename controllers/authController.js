@@ -46,8 +46,6 @@ export const signup = async (req, res) => {
             medicalReport,
             city,
             address,
-            latitude,
-            longitude,
             userType
         });
 
